@@ -39,11 +39,22 @@ module.exports = Backbone.Router.extend({
 	imageFeed: function(){
 		$('.page').hide();
 		$('#imagefeed').show();
-
+		$('.image-holder').show();
+		$('.image-input-holder').show();
+		var url = window.location.href
+		var	profileName = url.split("/").pop();
+		$('.imagefeed-username').html(profileName);
 
 
 	},
 	profile: function(){
+		$('#profile').show();
+		$('#home').hide();
+		$('#login').hide();
+		$('#signup').hide();
+		$('.image-holder').hide();
+		$('.image-input-holder').hide();
+		console.log('profile');
 
 	}
 });

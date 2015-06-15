@@ -5,7 +5,9 @@ Backbone.$ = $;
 module.exports = Backbone.Model.extend({
 	defaults: {
 		_id: null,
-		message: null
+		message: null,
+		imageID: null,
+		userID: null
 	},
 	urlRoot: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments',
 	idAttribute: '_id'

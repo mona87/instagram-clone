@@ -151,11 +151,12 @@ p{
 }
 
 .imagefeed-header{
-	height: 109px;
+	min-height: 109px;
 	background-color: white;
 	width: 100%;
 	border-bottom: 1px solid #EDEEEE;
 	padding-top: 35px;
+
 }
 
 .imagefeed-links{
@@ -168,6 +169,7 @@ p{
 
 .imagefeed-username{
 	margin-right: 20px;
+	cursor: pointer;
 
 }
 
@@ -177,6 +179,7 @@ p{
 	height: 45px;
 	width: 126px;
 	margin: 0 auto;
+	cursor: pointer;
 
 
 }
@@ -265,26 +268,79 @@ p{
 .images img{
 	width: 100%;
 	max-width: 600px;
-	border-left: 1px solid #EDEEEE;
-	border-right: 1px solid #EDEEEE;	
+/*	border-left: 1px solid #EDEEEE;
+	border-right: 1px solid #EDEEEE;*/	
 }
 
 .img-wrapper{
-	border-bottom: 1px solid #EDEEEE;
+	border-left: 1px solid #EDEEEE;
+	border-right: 1px solid #EDEEEE;
+	background-color: white;
 
 }
 
 .caption-style{
 	background-color: white;
 	text-align: center;
-	font-size: 14px;
+	font-size: 16px;
 	color: #005686;
-	border-left: 1px solid #EDEEEE;
-	border-right: 1px solid #EDEEEE;
+
+	border-bottom: 1px solid #EDEEEE;
 	box-sizing:border-box;
-	padding: 10px 0 10px 0;
+	padding: 10px 0px 10px 0px;
+	margin: 0 30px 0 30px;
 
 }
+.comment-input{
+	width: 100%;
+	padding-left: 30px;
+	min-height:60px;
+	border: 1px solid #EDEEEE;
+	border-top: 0;
+}
+
+.username-big{
+	height: 50px;
+	width: 100%;
+	max-width: 300px;
+	font-size: 24px;
+	margin: 50px auto auto auto;
+	padding-left: 10px;
+
+}
+
+.info{
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+
+.num-post, .num-followers,.num-following{
+	display: inline-block;
+	margin-right: 20px;
+	font-size: 16px;
+	color: #4B4F6D;
+
+}
+
+.img-rows{
+	width: 300px;
+	min-height: 300px;
+	margin: 0 auto;
+}
+
+.user-sm-imgs img{
+	width: 100%;
+	max-width:300px;
+	float: left;
+	border: 1px solid #EDEEEE;
+
+}
+.user-sm-imgs {
+	display: inline-block;
+}
+
+
 
 
 

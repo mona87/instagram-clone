@@ -13447,10 +13447,13 @@ $(document).ready(function(e){
 	new Date();
 	var url = window.location.href
 	var	profileName = url.split("/").pop();
-	console.log(profileName);
+
 
 	var buildImgTemplate = _.template($('.img-template').html());
-	
+	var buildCommentTemplate = _.template($('.comment-template').html());
+	var buildImgTemplate2 = _.template($('.user-images').html());
+
+
 	users.fetch({ success: onUsersLoaded });
 	function onUsersLoaded(UserCollection){
 
@@ -13476,8 +13479,8 @@ $(document).ready(function(e){
 					$('.error').hide();
 					$('.imagefeed-username').html($('#login-username').val());
 					userExist.set({loggedIn: true, lastLoggedIn: Date.now()});
-					console.log('user is login is set to'+userExist.get('loggedIn'))
-					console.log(userExist)
+					// console.log('user is login is set to'+userExist.get('loggedIn'))
+
 					// userExist.save();
 					var query =  $('#login-username').val();				
 					myRouter.navigate('imageFeed/'+query, {trigger: true});
@@ -13515,9 +13518,63 @@ $(document).ready(function(e){
 	}
 
 	imageList.fetch({ success: onImagesLoaded });
-		$('#image-input-form').on('submit', function(e){
+	function onImagesLoaded (ImageModel){
+			 imageList.forEach(function(model){
+			 	var num = 0;
+			 	$('.images').append(buildImgTemplate({model: model}));
+			 	
+			 	// console.log('[data-form="'+model.get('_id')+'"]');
+			 });
+			 imageList.on('add', function(mod){
+				$('.images').prepend(buildImgTemplate({model: mod.attributes}));
+					console.log('[data-form="'+mod.attributes.attributes._id+'"]');
+					console.log();
+					$('[data-form="'+mod.attributes.attributes._id+'"]').on('submit', function(e){
+						 e.preventDefault();
+						console.log('true')
+						var newComment = new Comment({
+							message: $('.comment-input').val()
+						
+						});
+						commentList.add(newComment);
+					})
+				});
+			 
+			 	$('.img-header-username').on('click', function(e){
+					e.preventDefault();				
+					var string = $(e.target).text();
+					$('.username-big').html(string);
+					showUserImages(string)
+				})
+				$('.imagefeed-username').on('click', function(e){
+					e.preventDefault();
+					$('.username-big').html($(e.target).text());
+					showUserImages($(e.target).text())
+				});
+				$('.imagefeed-logo').on('click', function(e){
+					e.preventDefault();
+					
+					console.log('profile '+profileName)
+					myRouter.navigate('imageFeed/'+$('.imagefeed-username').text(), {trigger:true});
+				});
+				function showUserImages(arg){
+					var num = 0;
+					$('.img-rows').html('');
+					imageList.forEach(function(model){
+							if(model.get('userID') === arg){
+								num++;
+								$('.num-post').html(num+ ' posts');
+								$('.img-rows').append(buildImgTemplate2({model: model}))
+							}		
+						});
+					myRouter.navigate('profile/'+arg, {trigger:true});
+				}
+	}
+	$('#image-input-form').on('submit', function(e){
 				e.preventDefault();
-				
+				var url = window.location.href
+				profileName = url.split("/").pop();
+
 				var imageToAdd = new ImageModel({
 					url: $('.image-input').val(),
 					caption: $('.image-caption').val(),
@@ -13528,29 +13585,18 @@ $(document).ready(function(e){
 				if(imageToAdd.isValid()){
 					$('.error').hide();	
 					console.log('profilename '+profileName)
-					console.log('url ' +imageToAdd.get('url'))		
-					imageList.add(imageToAdd);
-					// imageToAdd.save();
+					console.log('url ' +imageToAdd.get('url'))
+					imageToAdd.save();		
+					imageList.add(imageToAdd);	
 					$('.image-input').val('');
 					$('.image-caption').val('')			
-				}else{
+				}
+				else{
 					$('.error').show();
 					$('.error').html(imageToAdd.validationError);
 				}				
 		});
-	function onImagesLoaded (ImageModel){
-			 imageList.forEach(function(model){
-			 	$('.images').append(buildImgTemplate({model: model}));
-			 });
-			 imageList.on('add', function(mod){
-			 	console.log(mod)
-				$('.images').prepend(buildImgTemplate({model: mod.attributes}));
-				console.log('url '+mod.get('url'));
-				console.log('attr '+mod.attributes);
-			});
-	}
 	
-
 	$('#home-login-btn').on('click', function(e){
 		e.preventDefault();
 		myRouter.navigate('login', {trigger:true});
@@ -13565,6 +13611,7 @@ $(document).ready(function(e){
 
 
 
+
 });
 },{"./collections/CommentCollection.js":7,"./collections/ImageCollection.js":8,"./collections/UserCollection.js":9,"./models/CommentModel.js":11,"./models/ImageModel.js":12,"./models/UserModel.js":13,"./models/router.js":14,"backbone":3,"backbone/node_modules/underscore":4,"jquery":5}],11:[function(require,module,exports){
 var $ = require('jquery');
@@ -13574,7 +13621,9 @@ Backbone.$ = $;
 module.exports = Backbone.Model.extend({
 	defaults: {
 		_id: null,
-		message: null
+		message: null,
+		imageID: null,
+		userID: null
 	},
 	urlRoot: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments',
 	idAttribute: '_id'
@@ -13686,11 +13735,22 @@ module.exports = Backbone.Router.extend({
 	imageFeed: function(){
 		$('.page').hide();
 		$('#imagefeed').show();
-
+		$('.image-holder').show();
+		$('.image-input-holder').show();
+		var url = window.location.href
+		var	profileName = url.split("/").pop();
+		$('.imagefeed-username').html(profileName);
 
 
 	},
 	profile: function(){
+		$('#profile').show();
+		$('#home').hide();
+		$('#login').hide();
+		$('#signup').hide();
+		$('.image-holder').hide();
+		$('.image-input-holder').hide();
+		console.log('profile');
 
 	}
 });
