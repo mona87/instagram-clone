@@ -13524,24 +13524,30 @@ $(document).ready(function(e){
 				$('.images').prepend(buildImgTemplate({model: mod.attributes}));
 					console.log('[data-form="'+mod.attributes.attributes._id+'"]');
 					console.log();
+					addComments();
+
+
 				});
-			 	$('[data-form]').each(function(id){
-						var imgID =$(this).attr('data-form');
-						// console.log(typeof id);
-						$('[data-form="'+ imgID +'"]').on('submit', function(e){
-							 e.preventDefault();
-							var url = window.location.href
-							profileName = url.split("/").pop();
-							var newComment = new CommentModel({
-								message: '<span style="color:#005686">'+profileName+'</span>' +' '+ $(this).find('.comment-input').val(),
-								imageID: imgID,
-								userID: profileName
-							});
-							$('.comment-input').val('');
-							newComment.save();
-							commentList.add(newComment);
-						})
-				})
+			 	addComments();
+			 	function addComments(){
+				 	$('[data-form]').each(function(id){
+							var imgID =$(this).attr('data-form');
+							// console.log(typeof id);
+							$('[data-form="'+ imgID +'"]').on('submit', function(e){
+								 e.preventDefault();
+								var url = window.location.href
+								profileName = url.split("/").pop();
+								var newComment = new CommentModel({
+									message: '<span style="color:#005686">'+profileName+'</span>' +' '+ $(this).find('.comment-input').val(),
+									imageID: imgID,
+									userID: profileName
+								});
+								$('.comment-input').val('');
+								newComment.save();
+								commentList.add(newComment);
+							})
+					})
+			 	}
 			 	commentList.fetch();
 			 	commentList.on('add', function(commentMod){
 			 		html = buildCommentTemplate({model: commentMod});
@@ -13576,6 +13582,7 @@ $(document).ready(function(e){
 								$('.img-rows').append(buildImgTemplate2({model: model}))
 							}		
 						});
+					num = 0;
 					myRouter.navigate('profile/'+arg, {trigger:true});
 				}
 	}
