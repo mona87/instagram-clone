@@ -156,7 +156,10 @@
 	</section>
 	<div class ="img-wrapper" data-img="<%= model.get('_id')%>">
 		<img  src="<%= model.get('url')%>">
-		<div class="caption-style"><%= model.get('caption') %></div>
+		<div class="caption-style"><%= model.get('caption') %>
+		<div class="comment-list"></div>
+		</div>
+		
 	</div>
 	<div class="comments">
 		<form class="comment-form" type="submit" data-form ="<%= model.get('_id')%>" type="">

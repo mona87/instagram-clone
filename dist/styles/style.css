@@ -340,6 +340,12 @@ p{
 	display: inline-block;
 }
 
+.comment-list{
+	padding-top: 10px;
+	text-align: left;
+	color: black;
+}
+
 
 
 

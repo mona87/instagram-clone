@@ -13397,7 +13397,7 @@ var CommentModel = require('../../scripts/models/CommentModel.js');
 
 module.exports = Backbone.Collection.extend({
 	model: CommentModel,
-	url: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments'
+	url: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments1'
 })
 
 
@@ -13453,7 +13453,6 @@ $(document).ready(function(e){
 	var buildCommentTemplate = _.template($('.comment-template').html());
 	var buildImgTemplate2 = _.template($('.user-images').html());
 
-
 	users.fetch({ success: onUsersLoaded });
 	function onUsersLoaded(UserCollection){
 
@@ -13462,7 +13461,6 @@ $(document).ready(function(e){
 					username: profileName
 				})
 		if(userExist){
-
 			// console.log('user exist');
 			// console.log('user is login is set to'+userExist.get('loggedIn'))
 			$('.imagefeed-username').html(profileName);
@@ -13520,26 +13518,37 @@ $(document).ready(function(e){
 	imageList.fetch({ success: onImagesLoaded });
 	function onImagesLoaded (ImageModel){
 			 imageList.forEach(function(model){
-			 	var num = 0;
 			 	$('.images').append(buildImgTemplate({model: model}));
-			 	
-			 	// console.log('[data-form="'+model.get('_id')+'"]');
 			 });
 			 imageList.on('add', function(mod){
 				$('.images').prepend(buildImgTemplate({model: mod.attributes}));
 					console.log('[data-form="'+mod.attributes.attributes._id+'"]');
 					console.log();
-					$('[data-form="'+mod.attributes.attributes._id+'"]').on('submit', function(e){
-						 e.preventDefault();
-						console.log('true')
-						var newComment = new Comment({
-							message: $('.comment-input').val()
-						
-						});
-						commentList.add(newComment);
-					})
 				});
-			 
+			 	$('[data-form]').each(function(id){
+						var imgID =$(this).attr('data-form');
+						// console.log(typeof id);
+						$('[data-form="'+ imgID +'"]').on('submit', function(e){
+							 e.preventDefault();
+							var url = window.location.href
+							profileName = url.split("/").pop();
+							var newComment = new CommentModel({
+								message: '<span style="color:#005686">'+profileName+'</span>' +' '+ $(this).find('.comment-input').val(),
+								imageID: imgID,
+								userID: profileName
+							});
+							$('.comment-input').val('');
+							newComment.save();
+							commentList.add(newComment);
+						})
+				})
+			 	commentList.fetch();
+			 	commentList.on('add', function(commentMod){
+			 		html = buildCommentTemplate({model: commentMod});
+			 		var imgID = commentMod.attributes.imageID;
+			 		console.log('[data-form="' + imgID +'"]')
+			 		$('[data-img="' + imgID +'"] .comment-list').append(html);
+			 	})			 
 			 	$('.img-header-username').on('click', function(e){
 					e.preventDefault();				
 					var string = $(e.target).text();
@@ -13625,7 +13634,7 @@ module.exports = Backbone.Model.extend({
 		imageID: null,
 		userID: null
 	},
-	urlRoot: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments',
+	urlRoot: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments1',
 	idAttribute: '_id'
 })
 },{"backbone":3,"jquery":5}],12:[function(require,module,exports){

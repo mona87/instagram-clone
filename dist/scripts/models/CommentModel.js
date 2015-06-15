@@ -9,6 +9,6 @@ module.exports = Backbone.Model.extend({
 		imageID: null,
 		userID: null
 	},
-	urlRoot: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments',
+	urlRoot: 'http://tiny-pizza-server.herokuapp.com/collections/mona-instagram-comments1',
 	idAttribute: '_id'
 })
