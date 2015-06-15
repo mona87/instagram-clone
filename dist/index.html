@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body>
+	<main class="container-fluid">
+		<section class="page" id="home">
+			<div class="row">
+				<header class="col-sm-12 home-header">
+					<div class="col-sm-3 col-sm-offset-6 title"><img src="https://instagramstatic-a.akamaihd.net/bluebar/67f7848/images/homepage/brand-solid-white.png"></div>
+					<div class="col-sm-3  home-login">
+						<a href="#login"><button id="home-login-btn">Login</button></a>
+					</div>
+				</header>
+
+			</div>
+			<div class="row">
+				<div class="col-sm-offset-6 home-body"><strong>Capture and Share the World's Moments</strong>
+				<p>
+					Instagram is a free and simple way to share your life and keep up with other people.</p>
+				<p>
+					Take a picture or video, then customize it with filters and creative tools. Post it on Instagram and share instantly on Facebook, Twitter, Tumblr and more&ndash;or send it directly as a private message. Find people to follow based on things you're into, and be part of an inspirational community.</p>
+				</div>
+			</div>
+			<div class="img-holder">
+				<img src="https://instagramstatic-a.akamaihd.net/bluebar/67f7848/images/homepage/home-phones.png">
+			</div>
+		</section>
+		<section class="page" id="login">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="login-menu">
+						<div class="" id="login-logo"></div>
+						<a href="#signup"><div id="signup-link">Sign Up</div>	</a>
+						<a href="#login"><div id="login-link">Log In</div></a>					
+						<form id="login-form" type="submit">	
+							<div class="error"></div>
+							<label class="label-login"><strong>Username</strong></label>
+							<input class="login-input" id="login-username" type="text" placeholder="Enter your username">
+							<label class="label-login">Password</label>
+							<input class="login-input" id="login-password" type="password" placeholder="Enter Your Password">
+							<button id="login-button">Log in</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="page" id="signup">
+			<div class="row">
+				<div class="signup-menu">
+						<div class="" id="login-logo"></div>
+						<a href="#signup"><div id="signup-link">Sign Up</div>	</a>
+						<a href="#login"><div id="login-link">Log In</div></a>	
+						<form id="signup-form">
+							<div class="error"></div>
+							<label class="label-signup"><strong>Full Name</strong></label>
+							<input class="signup-input" id="signup-fullname" type="text" placeholder="Add your full name (optional)">
+							<label class="label-signup"><strong>Username</strong></label>
+							<input class="signup-input" id="signup-username" type="text" placeholder="Enter your username">
+							<label class="label-signup">Password</label>
+							<input class="signup-input" id="signup-password" type="password" placeholder="Enter Your Password">
+							<label class="label-signup">Email</label>
+							<input class="signup-input" id="signup-email" type="text" placeholder="Enter your email">
+							<button id="signup-button">Sign Up</button>
+							<!-- <button id="register-button">Register</button> -->
+						</form>
+				</div>
+			</div>
+		</section>
+		<section class="page" id='imagefeed'>
+			<div class="row">
+				<div class="imagefeed-header">
+					<div class="row">
+						<div class="col-sm-6 ">
+							<div class="imagefeed-logo"></div>
+						</div>
+						<div class="col-sm-6 imagefeed-links">
+							<a class="imagefeed-username" herf="#profile"></a>
+							<a class="imagefeed-logout" href="#home">Log out</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 image-input-holder">			
+					<form id="image-input-form">
+					<div class="error"></div>
+						<label>Add Image</label>
+						<input class="image-input" type="text" placeholder="Image URL">
+						<label>Add Caption</label>
+						<input class="image-caption"type="text" placeholder="Image caption (optional)">
+						<button class="image-submit-btn" type="submit">Submit</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="image-holder">
+						
+						<section class="images">
+							
+						</section>
+						<section class="comments">
+							
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer id="footer">
+			<div class="row">
+				<div class="col-sm-12">
+					<ul>
+						<li><a href="#"></a>About Us</li>
+						<li><a href="#"></a>Support</li>
+						<li><a href="#"></a>Blog</li>
+						<li><a href="#"></a>Press</li>
+						<li><a href="#"></a>API</li>
+						<li><a href="#"></a>Jobs</li>
+						<li><a href="#"></a>Privacy</li>
+						<li><a href="#"></a>Terms</li>
+						<li id="copy">&copy; 2015 INSTAGRAM</li>
+					</ul>
+				</div>
+			</div>		
+		</footer>
+	</main>
+
+<script type="text/template" class="comments-template">
+	<div class="comment-wrapper">
+		<div><%= model.get('message')%></div>
+	</div>
+</script>
+<script type="text/template" class="img-template">
+	<section class="image-top-header">
+		<a class="img-header-username" herf="#profile">
+			<%= model.get('userID')%>
+		</a>
+	</section>
+	<div class ="img-wrapper">
+		<img src="<%= model.get('url')%>">
+		<div class="caption-style"><%= model.get('caption') %></div>
+	</div>
+</script>
+<script type="text/javascript" src="scripts/all.js"></script>
+</body>
+</html>

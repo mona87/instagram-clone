@@ -1,0 +1,291 @@
+body{
+	background-color: #FAFAFA;
+}
+
+.home-header{
+	background-color: #125688;
+	height: 250px;
+	width: 100%;
+	padding-top: 150px;
+
+}
+
+.img-holder{
+	position: absolute;
+	top: 0;
+	left: 50px;
+
+}
+
+p{
+	width:100%;
+	max-width: 400px;
+}
+
+.title{
+	
+}
+
+.home-body{
+	padding-top: 50px;
+	padding-left: 15px;
+	/*background-color: white;*/
+}
+.home-login{
+	height: 59px;
+}
+
+#home-login-btn{
+	background-color: white;
+	border-radius: 3px;
+	border: 0;
+	height: 33px;
+	width: 80px;
+	margin-top:10px;
+	margin-left: 50px;
+}
+
+#footer{
+
+	width: 100%;
+	margin-top: 150px;
+
+}
+#footer ul li{
+	display: inline-block;
+	margin-right: 10px;
+	color: #417299;
+}
+#footer ul{
+	text-align: center;
+}
+
+#footer #copy{
+	font-size: 12px;
+	color: #cccccc;
+}
+
+.login-menu, .signup-menu{
+	width: 100%;
+	max-width: 373px;
+	min-height: 300px;
+	border: 1px solid #EDEEEE;
+	margin: 100px auto auto auto;
+	padding: 0 20px 20px 20px;
+	border-radius: 3px;
+	background-color: white;
+
+}
+
+.label-login, .label-signup {
+	width: 100%;
+	display: block;
+	padding-left: 10px;
+	margin-top: 10px;
+	clear: both;
+
+}
+
+.login-input, .signup-input{
+	width:100%;
+	padding: 0 0 0 10px;
+	height: 35px;
+	border-radius: 3px;
+	border: 1px solid #EDEEEE;
+}
+
+#login-logo{
+	background: url('https://instagramstatic-a.akamaihd.net/bluebar/67f7848/cache/sprites/core-sprites-e93606.png');
+	background-position: -186px -92px;
+	height: 45px;
+	width: 126px;
+	margin: 30px auto 30px auto;
+}
+
+#login-button, #register-button{
+	background-color: #66BD2B;
+	width: 100%;
+	border: 0;
+	color: white;
+	margin-top: 10px;
+	height: 35px;
+	border-radius: 3px;
+}
+
+#signup-button{
+	background-color: #66BD2B;
+	width: 100%;
+	border: 0;
+	color: white;
+	margin-top: 10px;
+	height: 35px;
+	border-radius: 3px;
+}
+
+#signup-link{
+	float: right;
+	color: #005686;
+	cursor: pointer;
+	margin-left: 20px;
+
+}
+#login-link{
+	float: right;
+	color: #cccccc;
+	cursor: pointer;
+	
+}
+#signup-form{
+	
+}
+
+.error{
+	color: red;
+	height: 30px;
+	width: 100%;
+	display: none;
+	clear: both;
+	padding-top: 20px;
+	margin: 0 auto 30px auto;
+	box-sizing: border-box;
+}
+
+.imagefeed-header{
+	height: 109px;
+	background-color: white;
+	width: 100%;
+	border-bottom: 1px solid #EDEEEE;
+	padding-top: 35px;
+}
+
+.imagefeed-links{
+	height: 45px;
+	padding-top: 10px;
+	text-align: center;
+	font-size: 14px;
+
+}
+
+.imagefeed-username{
+	margin-right: 20px;
+
+}
+
+.imagefeed-logo{
+	background: url('https://instagramstatic-a.akamaihd.net/bluebar/67f7848/cache/sprites/core-sprites-e93606.png');
+	background-position: -186px -92px;
+	height: 45px;
+	width: 126px;
+	margin: 0 auto;
+
+
+}
+
+#image-input-form >input{
+	width: 100%;
+	max-width: 200px;
+	padding: 0 0 0 10px;
+	height: 35px;
+	border-radius: 3px;
+	border: 1px solid #EDEEEE;
+	margin-left: 10px;
+	display: inline-block;
+
+
+}
+
+.image-input{
+	margin-right: 30px;
+}
+
+.image-caption{
+	margin-right: 5px;
+}
+
+#image-input-form{
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#image-input-form >label{
+
+	color: #337AB9;
+
+}
+
+.image-input-holder{
+	/*text-align: center;*/
+	background-color: white;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #EDEEEE;
+}
+
+.image-submit-btn{
+	background-color: #66BD2B;
+	width: 100%;
+	max-width: 100px;
+	border: 0;
+	color: white;
+	margin-top: 10px;
+	height: 35px;
+	border-radius: 3px;
+}
+
+.image-holder{
+	width:100%;
+	max-width: 600px;
+	min-height: 500px;
+	/*border: 1px solid #EDEEEE;*/
+	margin: 0 auto ;
+	margin-top: 30px;
+
+
+}
+
+.image-top-header{
+	height: 70px;
+	background-color: white;
+	border-bottom: 1px solid #EDEEEE;
+	box-sizing:border-box;
+	padding-top: 20px;
+	margin-top: 30px;
+	border: 1px solid #EDEEEE;
+
+}
+
+.img-header-username{
+	display: block;
+	cursor: pointer;
+	font-size: 18px;
+	margin-left: 20px;
+	
+}
+
+.images img{
+	width: 100%;
+	max-width: 600px;
+	border-left: 1px solid #EDEEEE;
+	border-right: 1px solid #EDEEEE;	
+}
+
+.img-wrapper{
+	border-bottom: 1px solid #EDEEEE;
+
+}
+
+.caption-style{
+	background-color: white;
+	text-align: center;
+	font-size: 14px;
+	color: #005686;
+	border-left: 1px solid #EDEEEE;
+	border-right: 1px solid #EDEEEE;
+	box-sizing:border-box;
+	padding: 10px 0 10px 0;
+
+}
+
+
+
+
